@@ -27,21 +27,30 @@ const degree = ["A", "B", "C", "D", "E"];
 
 // Assignment 3
 const calcTotalScore = function (score1, score2) {
-  return score1 + score2;
+ return score1 + score2;
 }
+
 for (let i = 0; i < studentsArr.length; i++) {
-  // console.log(studentsArr);
   const totalScore = calcTotalScore(studentsArr[i].score1, studentsArr[i].score2);
   studentsArr[i].total = totalScore;
-}
-console.log(studentsArr);
+// Pass exam
+  if(totalScore >= 51) {
+    console.log(studentsArr[i].name + ' pass the exam');
+  }
 
-const studentsScore = studentsArr.map(score => {
-  let eachScore = {};
-  eachScore[score.name] = score.total;
-  return eachScore;
-});
-console.log(studentsScore);
+for (let x = 0; x < passScore.length; x++) {
+  if(totalScore >= passScore[x]) {
+    console.log('He has ' + totalScore + ' points, and he got a degree' + degree[x]);
+    break;
+  }
+} 
+// const studentsScore = studentsArr.map(score => {
+//   let eachScore = {};
+//   eachScore[score.name] = score.total;
+//   return eachScore;
+// });
+// console.log(...studentsScore);
+}
 
 // Different way
 // const studentScore1 = [...new Set(studentsArr.map(student => student.score1))]
@@ -56,4 +65,6 @@ console.log(studentsScore);
 // 5. Display the final result in console.
 
 
-
+// 誰がどのスコアをとるか
+// まず、const passScore = [91, 81, 71, 61, 51];と4人の合計得点を比較する。
+//
